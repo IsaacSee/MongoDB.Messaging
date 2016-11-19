@@ -63,15 +63,15 @@ namespace MongoDB.Messaging.Storage
             if (connectionName == null)
                 throw new ArgumentNullException("connectionName");
 
-            var settings = ConfigurationManager.ConnectionStrings[connectionName];
-            if (settings == null)
-                throw new ConfigurationErrorsException($"No connection string named '{connectionName}' could be found in the application configuration file.");
+            //var settings = ConfigurationManager.ConnectionStrings[connectionName];
+            //if (settings == null)
+            //    throw new ConfigurationErrorsException($"No connection string named '{connectionName}' could be found in the application configuration file.");
 
-            string connectionString = settings.ConnectionString;
-            if (string.IsNullOrEmpty(connectionString))
-                throw new ConfigurationErrorsException($"The connection string '{connectionName}' in the application's configuration file does not contain the required connectionString attribute.");
+            //string connectionString = settings.ConnectionString;
+            //if (string.IsNullOrEmpty(connectionString))
+            //    throw new ConfigurationErrorsException($"The connection string '{connectionName}' in the application's configuration file does not contain the required connectionString attribute.");
 
-            var mongoUrl = new MongoUrl(settings.ConnectionString);
+            var mongoUrl = new MongoUrl(connectionName);
             return mongoUrl;
         }
     }
